@@ -1,4 +1,5 @@
 import torch
+import time
 from tqdm import tqdm
 
 from criterion import Criterion
@@ -62,6 +63,8 @@ class Tracking:
 
     def spin(self, share_data, kf_buffer):
         print("******* tracking process started! *******")
+        print(f"#frames={self.end_frame-self.start_frame}")
+        start = time.time()
         progress_bar = tqdm(
             range(self.start_frame, self.end_frame), position=0)
         progress_bar.set_description("tracking frame")
@@ -90,6 +93,8 @@ class Tracking:
                             
 
         share_data.stop_mapping = True
+        end = time.time()
+        print(f"Tracking time : {(end-start) * 10**3} ms")
         print("******* tracking process died *******")
 
     def check_keyframe(self, check_frame, kf_buffer):

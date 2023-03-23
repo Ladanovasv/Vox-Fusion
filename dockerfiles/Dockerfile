@@ -31,4 +31,8 @@ RUN python3 -m pip install --upgrade pip \
 RUN apt clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Set up env
+COPY ./entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
+
 CMD ["bash"]

@@ -22,7 +22,7 @@ class VoxSLAM:
         self.visualizer = Visualizer(args, self)
 
         # shared data 
-        mp.set_start_method('spawn', force=True)
+        mp.set_start_method('fork', force=True)
         BaseManager.register('ShareData', ShareData, ShareDataProxy)
         manager = BaseManager()
         manager.start()
@@ -60,6 +60,7 @@ class VoxSLAM:
     def wait_child_processes(self):
         for p in self.processes:
             p.join()
+        print(f"Wait {len(self.processes)} child processes")
 
     @torch.no_grad()
     def get_raw_trajectory(self):
