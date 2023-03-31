@@ -3,8 +3,8 @@ open3d==0.17.0
 opencv-python==4.7.0.72
 PyYAML==6.0
 scikit-image==0.20.0
-torch==2.0.0+cu117
-torchaudio==2.0.1+cu117
-torchvision==0.15.1+cu117
+torch==1.13.1+cu117
+torchvision==0.14.1+cu117
+torchaudio==0.13.1 
 tqdm==4.65.0
 trimesh==3.20.2
